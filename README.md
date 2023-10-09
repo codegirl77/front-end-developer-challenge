@@ -9,7 +9,7 @@ This is a place where TitanStar LegendsPlayers of TitanStar Legends can spend ta
 1. git clone https://github.com/codegirl77/front-end-developer-challenge.git
 2. npm install
 
-## How to Run
+## How to run
 
 ### npm start
 Runs the app in the development mode.
@@ -21,7 +21,7 @@ You will also see any lint errors in the console.
 ### npm test
 Launches the test runner in the interactive watch mode.
 
-##  How to Use the Project
+##  How to use the project
 Being the lengendary TitanStar LegendsPlayer you are, you have two rune paths to go on. Each of these rune paths has 4 runes to choose from. With a total of 6 talent points you get to choose which runes you want. But beware! You must select the the runes in the order of the rune paths.
 
 
@@ -40,7 +40,7 @@ https://github.com/codegirl77/front-end-developer-challenge/assets/47786094/9e8e
 This will remove runes. Runes must be removed in the the order they were added. Once runes have been removed, you can spend your talent points on other runes.
 
 
-### Points Spent Section
+### Points spent section
 
 <img width="147" alt="Screenshot 2023-10-09 at 11 51 54 AM" src="https://github.com/codegirl77/front-end-developer-challenge/assets/47786094/e293e369-d4c4-4fe3-aee7-56c46eb165d4">
 
