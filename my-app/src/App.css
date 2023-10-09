@@ -7,17 +7,30 @@ html, body
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
-.container {
+.count {
+  font-size: 20px;
+}
+
+.points-spent {
+  font-size: 20px;
+  color: #4682B4;
+}
+
+.body-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.nonbar{
+.skill-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.non-bar{
   justify-content: center;
   border: 10px solid black;
 }
@@ -27,43 +40,63 @@ html, body
   margin-right: 1px;
   border-top: 30px solid 	black; 
   border-bottom: 30px solid 	black;
-  background-color:	#696969;
+  background-color:	 #181818;
   width:100px;
-  height:10px; 
+  height:15px; 
 }
 
 .img {
   align-items: center;
   border-width: 4px;
   border-color: grey;
-  border-style: solid;
+  height:60px;
 }
 
-.talentPathContainer {
+.talent-path-container {
   display: inline-block;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-right: 30px;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .count-container {
-  display: inline-block;
+  display: flex;
   align-items: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  justify-content: center;
+  flex-direction: column;
+  margin: 50px;
 }
 
-.App {
+.app {
   color: white;
   display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  background-color: #181818;
+  height:40px; 
+  width:900px;
+  margin: 20px;
+  font-size: 20px;
   justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  flex-wrap: nowrap;
+}
+
+.skill-list-input-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .active {
-  background: grey;
+  background: 	#404040;
+  opacity: 0.5;
 } 
 
-.active-boarder {
+.active-border {
   background: linear-gradient(white, white) padding-box,
               linear-gradient(#4682B4, black, #4682B4) border-box;
   border: 4px solid transparent;
@@ -71,18 +104,32 @@ html, body
 
 .inactive {
   color: white;
-  opacity: .5; 
+  background: #181818;
+  opacity: 0.7;
 }
 
-@media (max-width: 800px) {
-  .container {
+.inactive-border {
+  background: 	#404040;
+  border: 4px solid transparent;
+  opacity: 0.7;
+}
+
+@media (max-width: 1200px) {
+  .skill-list-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
   }
+  .skill-list-input-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .skill-container {
     margin-top: 1px;
     margin-bottom: 1px;
+    justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -94,11 +141,20 @@ html, body
     margin-bottom: 1px;
     border-top: 1px;
     border-bottom: 1px;
-    border-right: 30px solid 	black;
-    border-left: 30px solid 	black;
-    background-color:	#696969;
-    width:10px;
-    height:100px; 
+    border-right: 30px;
+    border-left: 30px;
+    border-color: black;
+    border-style: solid;
+    background-color:	 rgb(72, 72, 72);;
+    width: 10px;
+    height: 100px; 
+  }
+
+  .body-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .img {
@@ -109,15 +165,43 @@ html, body
     border-style: solid;
   }
 
-  .active-boarder {
+  .active-border {
     background: linear-gradient(white, white) padding-box,
                 linear-gradient(#4682B4, black, #4682B4) border-box;
     border: 4px solid transparent;
+  }
+
+  .inactive-border {
+    background: 	#404040;
+    border: 4px solid transparent;
+    opacity: 0.7;
   }
   
   .inactive {
     color: white;
     opacity: .5; 
+    color: white;
+    background: #181818;
+    opacity: 0.7;
+  }
+
+  .talent-path-container {
+    display: flex;
+    margin: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .app-header {
+    display: flex;
+    background-color: #181818;
+    height: 100px; 
+    padding-left: 70px;
+    width: 270px;
+    margin: auto;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
   }
   
 }

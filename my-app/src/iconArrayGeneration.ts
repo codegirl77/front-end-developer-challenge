@@ -62,3 +62,6 @@ export const talentPathTwoIconArray: string[][] = [
   lightningBoltIconsArray,
   skullIconsArray,
 ];
+
+export const talentPathOneName: string = 'TALENT PATH 1';
+export const talentPathTwoName: string = 'TALENT PATH 2';

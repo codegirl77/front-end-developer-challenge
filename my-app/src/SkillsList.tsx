@@ -2,37 +2,43 @@ import React, { useState, Dispatch, SetStateAction, } from 'react';
 import {
     DetailedIconArrayObject,
 } from './iconArrayGeneration';
+import {
+    isFirstIcon,
+    isLastIcon,
+    isTheIconToTheLeftClicked,
+    isTheIconToTheRightClicked,
+} from './helperFunctions'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type clickHandlerArguments = {
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>, 
-    icon: DetailedIconArrayObject, 
-    i: number, 
-    detailedIconArray:DetailedIconArrayObject[], 
-    setDetailedIconArray:Dispatch<SetStateAction<DetailedIconArrayObject[]>>
     count: number,
+    detailedIconArray:DetailedIconArrayObject[],
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    i: number,  
+    icon: DetailedIconArrayObject, 
     setCount: Dispatch<SetStateAction<number>>
+    setDetailedIconArray:Dispatch<SetStateAction<DetailedIconArrayObject[]>>
 };
 
 type skillListItems = {
-    talentPathDetailedIconArray: DetailedIconArrayObject[],
-    setTalentPathDetailedIconArray:Dispatch<SetStateAction<DetailedIconArrayObject[]>>,
     count: number,
     setCount: Dispatch<SetStateAction<number>>
+    setTalentPathDetailedIconArray:Dispatch<SetStateAction<DetailedIconArrayObject[]>>,
+    talentPathDetailedIconArray: DetailedIconArrayObject[],
+    talentPathName: string,
 };
 
-const isIndexZero = (i : number) => {
-    return i === 0;
-};
-const isTheIconToTheLeftClicked = (i: number, detailedIconArray: DetailedIconArrayObject[]) => {
-    return detailedIconArray[i-1]?.iconClicked;
-};
-
-const isLastIcon = (i: number, detailedIconArray: DetailedIconArrayObject[]) => {
-    return i === detailedIconArray.length - 1;
-};
-
-const handleLeftClick = ({event, icon, i, detailedIconArray, setDetailedIconArray, count, setCount}: clickHandlerArguments) => {
-    if (   isIndexZero(i)
+const handleLeftClick = ({
+    count, 
+    detailedIconArray, 
+    event, 
+    i, 
+    icon, 
+    setCount,
+    setDetailedIconArray, 
+}: clickHandlerArguments) => {
+    if (   isFirstIcon(i)
         || isTheIconToTheLeftClicked(i,detailedIconArray)) {
       if (   count < 6
           && icon.iconClicked === false) {
@@ -41,34 +47,13 @@ const handleLeftClick = ({event, icon, i, detailedIconArray, setDetailedIconArra
             detailedIconArray[i] = icon;
             setDetailedIconArray(detailedIconArray);
       }
-      else {
-        console.log("You are out of runes! If you want to change your skills, right click arleady used runes to remove them. Once removed, you will be able to add other skills")
+      else if (icon.iconClicked === false){
+        toast("You are out of runes! If you want to change your skills, right click arleady used runes to remove them. Once removed, you will be able to add other skills!", {
+            autoClose: 10000,
+        });
       }
     }
   };
-
-const handleRightClick = ({
-    event, 
-    icon, 
-    i, 
-    detailedIconArray, 
-    setDetailedIconArray, 
-    count, 
-    setCount
-}: clickHandlerArguments) => {
-    event.preventDefault();
-
-    if (   isIndexZero(i)
-        || isTheIconToTheLeftClicked(i,detailedIconArray)) {
-            if (   count > 0
-                && icon.iconClicked) {
-              setCount(count - 1)
-              icon.iconClicked = false;
-              detailedIconArray[i] = icon;
-              setDetailedIconArray(detailedIconArray);
-            }
-    }
-};
 
 const handleMouseOver = (
     event: React.MouseEvent<HTMLImageElement, MouseEvent>, 
@@ -88,16 +73,45 @@ const handleMouseOut = (
     icon.iconClicked? currentTarget.src = icon.icon : currentTarget.src = icon.iconFaded;
 };
 
+const handleRightClick = ({ 
+    count, 
+    detailedIconArray, 
+    event, 
+    i,
+    icon, 
+    setCount,
+    setDetailedIconArray, 
+}: clickHandlerArguments) => {
+    event.preventDefault();
+
+
+    console.log(icon)
+    if (   isLastIcon(i, detailedIconArray)
+        || isTheIconToTheRightClicked(i, detailedIconArray) === false) 
+    {
+            if (   count > 0
+                && icon.iconClicked) {
+              setCount(count - 1)
+              icon.iconClicked = false;
+              detailedIconArray[i] = icon;
+              setDetailedIconArray(detailedIconArray);
+            }
+    }
+
+};
+
 function SkillsList({
-    talentPathDetailedIconArray, 
-    setTalentPathDetailedIconArray,
     count,
     setCount,
+    setTalentPathDetailedIconArray,
+    talentPathDetailedIconArray,
+    talentPathName,
 }: skillListItems)
 {
-    return (<div className='container'>
-        <div className="talentPathContainer" >
-            <p > Talent Path 1</p>
+    return (
+    <div className='skill-list-container'>
+        <div className="talent-path-container" >
+            <p>{talentPathName}</p>
         </div>
         {talentPathDetailedIconArray.map((icon: DetailedIconArrayObject, i: number) => 
             {
@@ -108,40 +122,41 @@ function SkillsList({
                         onClick={
                             event => 
                             handleLeftClick({
+                                count,
+                                detailedIconArray: talentPathDetailedIconArray,  
                                 event, 
-                                icon, 
                                 i, 
-                                detailedIconArray: talentPathDetailedIconArray, 
+                                icon, 
+                                setCount,
                                 setDetailedIconArray: setTalentPathDetailedIconArray, 
-                                count, 
-                                setCount
                             })
                         } 
                         onContextMenu={
                             event => 
                             handleRightClick({
+                                count,
+                                detailedIconArray: talentPathDetailedIconArray,  
                                 event, 
-                                icon, 
                                 i, 
-                                detailedIconArray: talentPathDetailedIconArray, 
+                                icon, 
+                                setCount,
                                 setDetailedIconArray: setTalentPathDetailedIconArray, 
-                                count, 
-                                setCount
                             })
                         }  
                     >
     
-                        <img className={`${icon?.iconClicked? "active-boarder" : "inactive"} img`}
+                        <img className={`${icon?.iconClicked? "active-border" : "inactive-border"} img`}
                             onMouseOver={(event) => {handleMouseOver(event, icon)}} 
                             onMouseOut={(event) => {handleMouseOut(event, icon)}} 
                             src={icon.iconClicked? icon.icon : icon.iconFaded} alt=""
                         />
-                        {isLastIcon(i, talentPathDetailedIconArray)?
-                        <div className='nonbar'></div>
+                        {  isLastIcon(i, talentPathDetailedIconArray)?
+                        <div className='non-bar'></div>
                         :
-                         <div className={`${icon?.iconClicked? "active" : "inactive"} bar`}></div>
+                         <div className={`${icon?.iconClicked && isTheIconToTheRightClicked(i, talentPathDetailedIconArray) ? "active" : "inactive"} bar`}></div>
                         }
                     </div>
+                    
                 );
             })
         }
