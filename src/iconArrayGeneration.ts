@@ -36,13 +36,13 @@ export const buildDetailedIconArray = (iconArray: string[][] ) => {
   iconArray.forEach((icons:string[]) => {
     const icon: string = icons[0];
     const iconFaded: string = icons[1];
-  
+
     const detailedIconObject: DetailedIconArrayObject = {
       icon,
       iconFaded,
       iconClicked: false,
     };
-  
+
     detailedIconArray.push(detailedIconObject);
   });
 
@@ -52,7 +52,7 @@ export const buildDetailedIconArray = (iconArray: string[][] ) => {
 export const talentPathOneIconArray: string[][] = [
   stackIconsArray,
   forkAndKniveIconsArray,
-  birthdayCakeIconsArray, 
+  birthdayCakeIconsArray,
   crownIconsArray,
 ];
 

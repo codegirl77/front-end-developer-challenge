@@ -15,8 +15,8 @@ type clickHandlerArguments = {
     count: number,
     detailedIconArray:DetailedIconArrayObject[],
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    i: number,  
-    icon: DetailedIconArrayObject, 
+    i: number,
+    icon: DetailedIconArrayObject,
     setCount: Dispatch<SetStateAction<number>>
     setDetailedIconArray:Dispatch<SetStateAction<DetailedIconArrayObject[]>>
 };
@@ -30,13 +30,13 @@ type skillListItems = {
 };
 
 const handleLeftClick = ({
-    count, 
-    detailedIconArray, 
-    event, 
-    i, 
-    icon, 
+    count,
+    detailedIconArray,
+    event,
+    i,
+    icon,
     setCount,
-    setDetailedIconArray, 
+    setDetailedIconArray,
 }: clickHandlerArguments) => {
     if (   isFirstIcon(i)
         || isTheIconToTheLeftClicked(i,detailedIconArray)) {
@@ -56,7 +56,7 @@ const handleLeftClick = ({
   };
 
 const handleMouseOver = (
-    event: React.MouseEvent<HTMLImageElement, MouseEvent>, 
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
     icon: DetailedIconArrayObject
 ) => {
     const { currentTarget } = event;
@@ -65,7 +65,7 @@ const handleMouseOver = (
 };
 
 const handleMouseOut = (
-    event: React.MouseEvent<HTMLImageElement, MouseEvent>, 
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
     icon: DetailedIconArrayObject
 ) => {
     const { currentTarget } = event;
@@ -73,21 +73,19 @@ const handleMouseOut = (
     icon.iconClicked? currentTarget.src = icon.icon : currentTarget.src = icon.iconFaded;
 };
 
-const handleRightClick = ({ 
-    count, 
-    detailedIconArray, 
-    event, 
+const handleRightClick = ({
+    count,
+    detailedIconArray,
+    event,
     i,
-    icon, 
+    icon,
     setCount,
-    setDetailedIconArray, 
+    setDetailedIconArray,
 }: clickHandlerArguments) => {
     event.preventDefault();
 
-
-    console.log(icon)
     if (   isLastIcon(i, detailedIconArray)
-        || isTheIconToTheRightClicked(i, detailedIconArray) === false) 
+        || isTheIconToTheRightClicked(i, detailedIconArray) === false)
     {
             if (   count > 0
                 && icon.iconClicked) {
@@ -113,41 +111,40 @@ function SkillsList({
         <div className="talent-path-container" >
             <p>{talentPathName}</p>
         </div>
-        {talentPathDetailedIconArray.map((icon: DetailedIconArrayObject, i: number) => 
+        {talentPathDetailedIconArray.map((icon: DetailedIconArrayObject, i: number) =>
             {
                 return (
                     <div
-                        key = {i} 
-                        className="skill-container" 
+                        key = {i}
+                        className="skill-container"
                         onClick={
-                            event => 
+                            event =>
                             handleLeftClick({
                                 count,
-                                detailedIconArray: talentPathDetailedIconArray,  
-                                event, 
-                                i, 
-                                icon, 
+                                detailedIconArray: talentPathDetailedIconArray,
+                                event,
+                                i,
+                                icon,
                                 setCount,
-                                setDetailedIconArray: setTalentPathDetailedIconArray, 
+                                setDetailedIconArray: setTalentPathDetailedIconArray,
                             })
-                        } 
+                        }
                         onContextMenu={
-                            event => 
+                            event =>
                             handleRightClick({
                                 count,
-                                detailedIconArray: talentPathDetailedIconArray,  
-                                event, 
-                                i, 
-                                icon, 
+                                detailedIconArray: talentPathDetailedIconArray,
+                                event,
+                                i,
+                                icon,
                                 setCount,
-                                setDetailedIconArray: setTalentPathDetailedIconArray, 
+                                setDetailedIconArray: setTalentPathDetailedIconArray,
                             })
-                        }  
+                        }
                     >
-    
                         <img className={`${icon?.iconClicked? "active-border" : "inactive-border"} img`}
-                            onMouseOver={(event) => {handleMouseOver(event, icon)}} 
-                            onMouseOut={(event) => {handleMouseOut(event, icon)}} 
+                            onMouseOver={(event) => {handleMouseOver(event, icon)}}
+                            onMouseOut={(event) => {handleMouseOut(event, icon)}}
                             src={icon.iconClicked? icon.icon : icon.iconFaded} alt=""
                         />
                         {  isLastIcon(i, talentPathDetailedIconArray)?
@@ -156,7 +153,6 @@ function SkillsList({
                          <div className={`${icon?.iconClicked && isTheIconToTheRightClicked(i, talentPathDetailedIconArray) ? "active" : "inactive"} bar`}></div>
                         }
                     </div>
-                    
                 );
             })
         }

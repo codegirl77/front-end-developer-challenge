@@ -17,7 +17,7 @@ const RuneMasteryLoadoutTalentCalculator = () => {
   const [count, setCount] = useState<number>(0);
   const [talentPathOneDetailedIconArray, setTalentPathOneDetailedIconArray] = useState<DetailedIconArrayObject[]>(buildDetailedIconArray(talentPathOneIconArray));
   const [talentPathTwoDetailedIconArray, setTalentPathTwoDetailedIconArray] = useState<DetailedIconArrayObject[]>(buildDetailedIconArray(talentPathTwoIconArray));
-  
+
   return (
     <div className="rune-mastery-loadout-talent-calculator">
       <ToastContainer/>
@@ -26,14 +26,14 @@ const RuneMasteryLoadoutTalentCalculator = () => {
       </header>
       <div className='body-container'>
         <div className='skill-list-input-container'>
-          <SkillsList 
+          <SkillsList
             count={count}
             setCount={setCount}
             setTalentPathDetailedIconArray={setTalentPathOneDetailedIconArray}
             talentPathDetailedIconArray={talentPathOneDetailedIconArray}
             talentPathName= {talentPathOneName}
           />
-          <SkillsList 
+          <SkillsList
             count={count}
             setCount={setCount}
             setTalentPathDetailedIconArray={setTalentPathTwoDetailedIconArray}
