@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+#  Rune Mastery Loadout Talent Calculator 9000
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Description
+Welcome to the Rune Mastery Loadout Talent Calculator 9000! 
 
-## Available Scripts
+This is a place where TitanStar LegendsPlayers of TitanStar Legends can spend talent points that they’ve collected on runes. These runes will be able to replicate their in-game loadouts to share with the TitanStar Legends community.
 
-In the project directory, you can run:
+# How to Install
+git clone http://url-to-my-repo
+npm install
 
-### `npm start`
+# How to Run
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# npm start
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
 
-The page will reload if you make edits.\
+The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-### `npm test`
+# npm test
+Launches the test runner in the interactive watch mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#  How to Use the Project
+Being the lengendary TitanStar LegendsPlayer you are you have two rune paths to go on. Each of these rune paths has 4 skills to choose from. With a total of 6 runes you get to choose which skills you want. But beware! you must select the the skills in the order of the rune paths.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Left click. (On mobile, it is just a normal tap)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This adds a skill at a cost of a rune. Runes can only be spent on skills in the order of the skill path. You can not jump ahead, but you can remove skills with a right click if need be. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Right click.(On mobile, hold down on the skill)
 
-### `npm run eject`
+This will remove skills. Skills must be removed in the the order they were added. Once skills have been removed, you can spend runes on other skills.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Points Spent Section
+This section lets you know how many runes you have spent. It will increase when you add runes and decrease when you remove them. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Info warning when all runes are spent
+If you have spent all of your runes, then when you try to use more runes you will get a pop-up warning. This pop-up explains that you must remove skills before you can add more. 
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

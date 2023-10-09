@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction, } from 'react';
+import React, { Dispatch, SetStateAction, } from 'react';
 import {
     DetailedIconArrayObject,
 } from './iconArrayGeneration';
@@ -8,7 +8,7 @@ import {
     isTheIconToTheLeftClicked,
     isTheIconToTheRightClicked,
 } from './helperFunctions'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 type clickHandlerArguments = {
